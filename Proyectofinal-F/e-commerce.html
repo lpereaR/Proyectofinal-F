@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Requerimientos</title>
+    <link rel="stylesheet" href="e-commerce.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Droguería</h1>
+      <img
+        src="img/pharmacy_8981656.png"
+        alt="Icono de la Droguería"
+        style="width: 50px; height: 50px"
+      />
+    </header>
+    <main id="vistaRequerimientos">
+      <section>
+        <form id="formularioCompra" action="vistaProductos.html" method="GET">
+          <article>
+            <div>
+              <label for="name">Nombre:</label>
+              <input type="text" id="name" name="user_name" required />
+            </div>
+            <div>
+              <label for="presupuesto">Presupuesto Máximo:</label>
+              <input
+                type="number"
+                id="presupuesto"
+                name="user_presupuesto"
+                required
+              />
+            </div>
+            <div>
+              <label for="cantidad">Cantidad de artículos:</label>
+              <input
+                type="number"
+                id="cantidad"
+                name="user_cantidad"
+                required
+              />
+            </div>
+            <div>
+              <label for="direccion">Dirección:</label>
+              <input
+                type="text"
+                id="direccion"
+                name="user_direccion"
+                required
+              />
+            </div>
+            <div>
+              <label for="entrega">Tipo de Entrega:</label>
+              <select id="entrega" name="entrega" required>
+                <option value="domicilio">A Domicilio</option>
+                <option value="recoger">Recoger en Tienda</option>
+              </select>
+            </div>
+          </article>
+          <aside>
+            <div>
+              <button type="button" id="iniciarCompra">Iniciar Compra</button>
+              <button type="reset">Limpiar</button>
+            </div>
+          </aside>
+        </form>
+      </section>
+    </main>
+    <footer>
+      <p>&copy2024 Droguería E-commerce Unicamacho</p>
+      <p>Contacto: luisaperea73@gmail.com</p>
+      <p>Teléfono: 4263643</p>
+    </footer>
+
+    <script src="e-commerce.js"></script>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Productos</title>
+    <link rel="stylesheet" href="e-commerce.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Droguería</h1>
+      <img src="img/pharmacy_8981656.png" alt="Icono de la Droguería" style="width: 50px; height: 50px" />
+    </header>
+
+    <main>
+      <!-- Sección de la lista de productos -->
+      <section id="vistaProductos">
+        <h2>Lista de Productos</h2>
+        <ul id="productosList" class="scroll-infinito"></ul>
+        <p id="mensajeFinal" style="display: none;">No hay más productos disponibles.</p>
+      </section>
+
+      <!-- Sección de detalles del producto -->
+      <section id="detalleProducto" style="display: none">
+        <h2>Detalles del Producto</h2>
+        <article>
+          <p id="productoDetalles"></p>
+          <div>
+            <label for="cantidadProducto">Cantidad:</label>
+            <input type="number" id="cantidadProducto" name="cantidadProducto" min="1" value="1" />
+          </div>
+          <button id="agregarCarrito">Agregar al Carrito</button>
+          <button id="volverLista">Volver a la Lista</button>
+        </article>
+      </section>
+
+      <!-- Sección de filtros -->
+      <section id="filtros">
+        <h2>Filtros</h2>
+        <select id="filtro1">
+          <option value="">Seleccione una opción</option>
+        </select>
+        <input type="text" id="filtro2" placeholder="Escriba un filtro" />
+        <button id="filtrar">Filtrar</button>
+        <button id="limpiarFiltros">Limpiar Filtros</button>
+      </section>
+
+      <!-- Barra de navegación -->
+      <nav>
+        <ul>
+          <li>
+            <button id="cancelarCompra">Cancelar Compra</button>
+          </li>
+          <li>
+            <button id="completarCompra">Completar Compra</button>
+          </li>
+        </ul>
+      </nav>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Droguería E-commerce Unicamacho</p>
+      <p>Contacto: luisaperea73@gmail.com</p>
+      <p>Teléfono: 4263643</p>
+    </footer>
+
+    <script src="e-commerce.js"></script>
+  </body>
+</html>
