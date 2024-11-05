@@ -368,23 +368,3 @@ const productos = [
         Cdisponibilidad: "50"
     }
 ];
-function cargarProductos() {
-    const productosList = document.getElementById("productosList");
-    productosList.innerHTML = ""; // Limpia la lista antes de agregar nuevos elementos
-  
-    // Revisa si el array de productos tiene contenido
-    console.log("Productos a cargar:", productos);
-  
-    productos.forEach((producto, index) => {
-      const item = document.createElement("li");
-      item.innerHTML = `
-        <img src="${producto.imagen}" alt="${producto.nombre}" />
-        <h3>${producto.nombre}</h3>
-        <p>Precio: $${producto.precio}</p>
-        <p>Marca: ${producto.marca}</p>
-        <p>Código: ${producto.codigo}</p>
-        <button onclick="mostrarDetallesProducto(${index})">Ver Detalle</button>
-      `;
-      productosList.appendChild(item);
-    });
-  }
