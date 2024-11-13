@@ -3,93 +3,106 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Requerimientos</title>
-    <link rel="stylesheet" href="e-commerce.css" />
+    <title>Vista Carrito de Compras</title>
+    <link rel="stylesheet" href="vistaCarrito.css" />
   </head>
   <body>
     <header>
       <h1>Droguería</h1>
-      <img
-        src="img/pharmacy_8981656.png"
-        alt="Icono de la Droguería"
-        style="width: 50px; height: 50px"
-      />
+      <img src="img/pharmacy_8981656.png" alt="Icono de la Droguería" style="width: 50px; height: 50px" />
     </header>
-<!-- Vista del Carrito de Compras -->
-<main id="vistaCarrito" style="display: none">
-  <h2>Carrito de Compras</h2>
 
-  <!-- Sección de Compra Actual (Tabla de productos seleccionados) -->
-  <section id="compraActual">
-    <h3>Compra Actual</h3>
-    <table id="tablaCarrito">
-      <thead>
-        <tr>
-          <th>Producto</th>
-          <th>Precio</th>
-          <th>Cantidad</th>
-          <th>Subtotal</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Los productos del carrito se agregarán dinámicamente aquí -->
-      </tbody>
-    </table>
-  </section>
+    <main id="vistaCarrito">
+      <h2>Carrito de Compras</h2>
+      <table id="tablaCarrito">
+        <thead>
+          <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Disponibilidad</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Aquí se agregarán los productos del carrito -->
+        </tbody>
+      </table>
+    
+      </section>
 
-  <!-- Resumen de la Compra -->
-  <section id="resumenCompra">
-    <h3>Resumen de la Compra</h3>
-    <ul>
-      <li>Total de productos: <span id="totalProductos"></span></li>
-      <li>Costo de envío (si aplica): $<span id="costoEnvio"></span></li>
-      <li>Total a pagar: $<span id="totalPagar"></span></li>
-    </ul>
-  </section>
+      <!-- Sección de Resumen de Compra -->
+      <section id="resumenCompra">
+        <h3>Resumen de la Compra</h3>
+        <ul>
+          <li>Total de productos: <span id="totalProductos">0</span></li>
+          <li>Costo de envío (si aplica): $<span id="costoEnvio">0</span></li>
+          <li>Total a pagar: $<span id="totalPagar">0</span></li>
+        </ul>
+      </section>
 
-  <!-- Sección de Tarjeta de Crédito -->
-  <section id="tarjetaCredito">
-    <h3>Información de Tarjeta de Crédito</h3>
-    <form id="formTarjeta">
-      <ul>
-        <li>
-          <label for="nombreTarjeta">Nombre en la tarjeta:</label>
-          <input type="text" id="nombreTarjeta" required />
-        </li>
-        <li>
-          <label for="numeroTarjeta">Número de tarjeta:</label>
-          <input type="text" id="numeroTarjeta" required maxlength="16" />
-        </li>
-        <li>
-          <label for="fechaExpiracion">Fecha de expiración (MM/AA):</label>
-          <input type="text" id="fechaExpiracion" required maxlength="5" />
-        </li>
-        <li>
-          <label for="codigoSeguridad">Código de seguridad:</label>
-          <input type="text" id="codigoSeguridad" required maxlength="3" />
-        </li>
-        <li>
-          <button type="button" id="ejecutarCompra">Ejecutar Compra</button>
-        </li>
-      </ul>
-    </form>
-  </section>
+      <!-- Sección de Tarjeta de Crédito -->
+      <!-- Sección de Tarjeta de Crédito -->
+<section id="tarjetaCredito">
+  <h3>Información de Tarjeta de Crédito</h3>
+  <form id="formTarjeta">
+    <label for="numeroTarjeta">Número de tarjeta:</label>
+    <input type="text" id="numeroTarjeta" required maxlength="16" /><br><br>
 
-  <!-- Botones de navegación -->
-  <nav>
-    <ul>
-      <li><button id="regresarProductos">Regresar a Productos</button></li>
-      <li><button id="cancelarCompraCarrito">Cancelar Compra</button></li>
-    </ul>
-  </nav>
-</main>
-<footer>
-    <p>&copy2024 Droguería E-commerce Unicamacho</p>
-    <p>Contacto: luisaperea73@gmail.com</p>
-    <p>Teléfono: 4263643</p>
-  </footer>
+    <label for="fechaExpiracion">Fecha de expiración (MM/AA):</label>
+    <input type="text" id="fechaExpiracion" required maxlength="5" /><br><br>
 
-  <script src="e-commerce.js"></script>
-</body>
+    <label for="codigoSeguridad">Código de seguridad:</label>
+    <input type="text" id="codigoSeguridad" required maxlength="3" /><br><br>
+
+    <label for="nombreTitular">Nombre del titular:</label>
+    <input type="text" id="nombreTitular" required /><br><br>
+
+    <label for="paisEmision">País de emisión:</label>
+    <select id="paisEmision" required>
+      <option value="">Seleccione un país</option>
+      <option value="Colombia">Colombia</option>
+      <option value="Brasil">Brasil</option>
+      <option value="Alemania">Alemania</option>
+      <option value="Australia">Australia</option>
+      <option value="Argentina">Argentina</option>
+      <option value="Ecuador">Ecuador</option>
+      <option value="Estados Unidos">Estados Unidos</option>
+      <option value="México">México</option>
+      <option value="Chile">Chile</option>
+      <option value="CostaRica">Costa Rica</option>
+    </select><br><br>
+
+    <label for="tipoTarjeta">Tipo de tarjeta:</label>
+    <select id="tipoTarjeta" required>
+      <option value="">Seleccione un tipo</option>
+      <option value="Mastercard">Mastercard</option>
+      <option value="Visa">Visa</option>
+      <option value="Prepagada">Prepagada</option>
+    </select><br><br>
+
+    <button type="reset">Limpiar</button>
+    <button type="button" id="confirmarCompra">Confirmar Compra</button>
+  </form>
+</section>
+
+
+      <!-- Barra de Navegación -->
+      <nav>
+        <ul>
+          <li><button onclick="window.location.href='e-commerce.html';">Cancelar Compra</button></li>
+          <li><button onclick="window.location.href='vistaProductos.html';">Seguir Comprando</button></li>
+        </ul>
+      </nav>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Droguería E-commerce Unicamacho</p>
+      <p>Contacto: luisaperea73@gmail.com</p>
+      <p>Teléfono: 4263643</p>
+    </footer>
+
+    <script src="e-commerce.js"></script>
+  </body>
 </html>
-</body>
