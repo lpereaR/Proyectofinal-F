@@ -17,32 +17,6 @@
     </header>
 
     <main>
-      <section id="vistaProductos">
-        <h2>Lista de Productos</h2>
-        <ul id="productosList" class="scroll-infinito"></ul>
-        <p id="mensajeFinal" style="display: none">
-          No hay más productos disponibles.
-        </p>
-      </section>
-
-      <section id="detalleProducto" style="display: none">
-        <h2>Detalles del Producto</h2>
-        <article>
-          <p id="productoDetalles"></p>
-          <div>
-            <label for="cantidadProducto">Cantidad:</label>
-            <input
-              type="number"
-              id="cantidadProducto"
-              name="cantidadProducto"
-              min="1"
-              value="1"
-            />
-          </div>
-          <button id="agregarCarrito">Agregar al Carrito</button>
-        </article>
-      </section>
-
       <section id="filtros">
         <h2>Filtros</h2>
         <select id="filtro1">
@@ -55,6 +29,32 @@
         <input type="text" id="filtro2" placeholder="Escriba un filtro" />
         <button id="filtrar">Filtrar</button>
         <button id="limpiarFiltros">Limpiar Filtros</button>
+      </section>
+
+        <section id="detalleProducto" style="display: none">
+          <h2>Detalles del Producto</h2>
+          <article>
+            <p id="productoDetalles"></p>
+            <div>
+              <label for="cantidadProducto">Cantidad:</label>
+              <input
+                type="number"
+                id="cantidadProducto"
+                name="cantidadProducto"
+                min="1"
+                value="1"
+              />
+            </div>
+            <button id="agregarCarrito">Agregar al Carrito</button>
+          </article>
+      </section>
+
+      <section id="vistaProductos">
+        <h2>Lista de Productos</h2>
+        <ul id="productosList" class="scroll-infinito"></ul>
+        <p id="mensajeFinal" style="display: none">
+          No hay más productos disponibles.
+        </p>
       </section>
 
       <nav>

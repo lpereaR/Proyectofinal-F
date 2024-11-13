@@ -368,30 +368,64 @@ const productos = [
         Cdisponibilidad: "50"
     }
 ];
+
+document.addEventListener("DOMContentLoaded", function () {
+  const filtro1 = document.getElementById("filtro1"); 
+  const filtro2 = document.getElementById("filtro2"); 
+  const botonFiltrar = document.getElementById("filtrar");
+  const botonEliminarFiltros = document.getElementById("limpiarFiltros");
+  const productosList = document.getElementById("productosList"); 
+
+  if (!botonFiltrar || !botonEliminarFiltros) {
+    console.error("No se encontraron los botones 'filtrar' o 'eliminarFiltros' en el DOM.");
+    return;
+  }
+  botonFiltrar.addEventListener("click", function () {
+    console.log("Botón 'Filtrar' fue clicado");
+    const categoriaSeleccionada = filtro1.value.toLowerCase();
+    const nombreFiltro = filtro2.value.trim().toLowerCase();
+
+    const productosFiltrados = productos.filter(producto => {
+      const coincideCategoria = categoriaSeleccionada === "" || producto.categoria.toLowerCase() === categoriaSeleccionada;
+      const coincideNombre = producto.nombre.toLowerCase().includes(nombreFiltro);
+      return coincideCategoria && coincideNombre;
+    });
+
+    productosList.innerHTML = "";
+    productosMostrados = 0;
+    mostrarProductos(productosFiltrados);
+  });
+
+  botonEliminarFiltros.addEventListener("click", function () {
+    console.log("Botón 'Eliminar Filtros' fue clicado");
+    filtro1.value = "";
+    filtro2.value = ""; 
+
+    productosList.innerHTML = ""; 
+    productosMostrados = 0; 
+    mostrarProductos(productos); 
+  });
+});
+
+
 const formularioCompra = document.getElementById("formularioCompra");
 if (formularioCompra) {
   formularioCompra.addEventListener("submit", function (event) {
-
-    // Obtener los valores de los campos del formulario
     const nombre = document.getElementById("name").value.trim();
     const presupuesto = document.getElementById("presupuesto").value.trim();
     const cantidad = document.getElementById("cantidad").value.trim();
     const direccion = document.getElementById("direccion").value.trim();
     const entrega = document.getElementById("entrega").value.trim();
 
-    // Verifica si el campo de nombre está vacío o supera los 20 caracteres
     if (!nombre || nombre.length > 20) {
       alert("El nombre debe ser una cadena y no puede superar los 20 caracteres.");
       return;
     }
 
-    // Verifica si el campo de presupuesto solo tiene números y es positivo
-    // Verifica si el campo de presupuesto solo tiene números y es positivo
     if (!presupuesto || isNaN(presupuesto) || presupuesto <= 0) {
      alert("El presupuesto debe ser un número positivo y mayor que cero.");
            return;
        } else {
-       // Formatear el valor del presupuesto a pesos colombianos (COP)
   const presupuestoFormateado = new Intl.NumberFormat("es-CO", {
     style: "currency",
     currency: "COP",
@@ -399,8 +433,6 @@ if (formularioCompra) {
 
   console.log(`Presupuesto formateado: ${presupuestoFormateado}`);
 }
-
-    // Verifica si el campo de cantidad solo tiene números, es positivo y no supera 20
     if (!cantidad || isNaN(cantidad) || cantidad <= 0 || cantidad > 20) {
       alert("La cantidad de artículos debe ser un número positivo y no mayor a 20.");
       return;
@@ -422,19 +454,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Botón "Completar Compra"
   const botonCompletar = document.getElementById("completarCompra");
   if (botonCompletar) {
     botonCompletar.addEventListener("click", function () {
       window.location.href = "vistaCarrito.html"; 
     });
   }
-
-  // Variables y Elementos del DOM
   const productosList = document.getElementById("productosList");
   const mensajeFinal = document.getElementById("mensajeFinal");
-  const detalleSection = document.getElementById("detalleProducto"); // Sección de detalles
-  const productoDetalles = document.getElementById("productoDetalles"); // Contenedor de los detalles
+  const detalleSection = document.getElementById("detalleProducto");
+  const productoDetalles = document.getElementById("productoDetalles");
   let productosMostrados = 0;
   
   function cargarProductos() {
@@ -447,10 +476,7 @@ document.addEventListener("DOMContentLoaded", function () {
         window.removeEventListener("scroll", manejarScroll);
         return;
       }
-
       const producto = productos[i];
-
-      // Crear un elemento de lista para cada producto
       const item = document.createElement("li");
       item.classList.add("tarjeta");
 
@@ -476,15 +502,13 @@ document.addEventListener("DOMContentLoaded", function () {
       botonDetalle.textContent = "Ver Detalle";
       botonDetalle.classList.add("tarjeta-boton");
       botonDetalle.addEventListener("click", function () {
-        mostrarDetallesProducto(producto); // Mostrar detalles del producto
+        mostrarDetallesProducto(producto);
       });
-
-      // Agregar los elementos al elemento de lista
       item.appendChild(img);
       item.appendChild(nombre);
       item.appendChild(precio);
       item.appendChild(disponibilidad);
-      item.appendChild(botonDetalle); // Agregar el botón "Ver Detalle"
+      item.appendChild(botonDetalle);
 
      
         productosList.appendChild(item);
@@ -492,18 +516,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     productosMostrados += cantidadPorCarga;
   }
-
-  // Función para manejar el scroll y cargar más productos
   function manejarScroll() {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
       cargarProductos();
     }
   }
-
-  // Cargar los primeros 15 productos al inicio
   cargarProductos();
-
-  // Agregar el evento de scroll para cargar más productos
   window.addEventListener("scroll", manejarScroll);
 });
 
@@ -512,12 +530,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (cantidadInput) {
       cantidadInput.addEventListener("input", function () {
-        // Permitir que el usuario escriba libremente
         const cantidad = parseInt(cantidadInput.value, 10);
-    
-        // Solo mostrar un mensaje de error si el número es menor o igual a 0
         if (cantidad <= 0 || isNaN(cantidad)) {
-          // Mostrar mensaje de error en la consola (en lugar de alert)
           console.log("La cantidad debe ser un número positivo.");
         }
       });
@@ -547,8 +561,10 @@ const botonAgregarCarrito = document.getElementById("agregarCarrito");
     console.error("El botón 'agregarCarrito' no se encontró en el DOM.");
   }
 
-  let productosCarrito = JSON.parse(localStorage.getItem("productosCarrito")) || [];
+  
+let productosCarrito = JSON.parse(localStorage.getItem("productosCarrito")) || [];
 actualizarVistaCarrito(); 
+actualizarResumenCompra();
 
 function agregarAlCarrito() {
   if (productoSeleccionado) {
@@ -565,6 +581,7 @@ function agregarAlCarrito() {
       localStorage.setItem("productosCarrito", JSON.stringify(productosCarrito));
       alert("Producto agregado al carrito correctamente.");
       actualizarVistaCarrito();
+      actualizarResumenCompra();
     } else {
       alert("Por favor, ingrese una cantidad válida.");
     }
@@ -614,69 +631,25 @@ document.addEventListener("DOMContentLoaded", function () {
   actualizarVistaCarrito();
 });
 
-let productosFiltradosGlobales = productos;
-let productosMostrados = 0;
 
-function aplicarFiltros() {
-  const filtro1 = document.getElementById("filtro1").value;
-  const filtro2 = document.getElementById("filtro2").value.toLowerCase();
-  productosFiltradosGlobales = productos.filter(producto => {
-    const coincideCategoria = filtro1 === "" || producto.categoria.toLowerCase() === filtro1.toLowerCase();
-    const coincideNombre = producto.nombre.toLowerCase().includes(filtro2);
-    return coincideCategoria && coincideNombre;
-  });
-  console.log("Productos filtrados:", productosFiltradosGlobales);
-  if (productosFiltradosGlobales.length === 0) {
-    productosList.innerHTML = "<p>No se encontraron productos con los filtros aplicados.</p>";
-    return;
-  }
-
-  productosMostrados = 0;
-
-  productosList.innerHTML = "";
-
-  mostrarProductos(productosFiltradosGlobales);
-}
-
-function limpiarFiltros() {
-  
-  document.getElementById("filtro1").value = ""; 
-  document.getElementById("filtro2").value = ""; 
-
-  productosFiltradosGlobales = productos;
-  
-  productosMostrados = 0;
-
-  productosList.innerHTML = "";
-  mostrarProductos(productos);
-}
-
-let compraEnProgreso = false; // Variable para controlar si hay una compra en progreso
-
+let compraEnProgreso = false; 
 document.getElementById("confirmarCompra").addEventListener("click", function (event) {
-  // Verifica si ya hay una compra en progreso
   if (compraEnProgreso) {
     alert("Hay una compra en progreso. Por favor, espere.");
     return;
   }
-
-  // Deshabilitar el botón para evitar múltiples peticiones
   compraEnProgreso = true;
   document.getElementById("confirmarCompra").disabled = true;
-
-  // Obtener los valores de los campos
   const numeroTarjeta = document.getElementById("numeroTarjeta").value;
   const fechaExpiracion = document.getElementById("fechaExpiracion").value;
   const codigoSeguridad = document.getElementById("codigoSeguridad").value;
   const nombreTitular = document.getElementById("nombreTitular").value;
   const paisEmision = document.getElementById("paisEmision").value;
   const tipoTarjeta = document.getElementById("tipoTarjeta").value;
-
-  // Validaciones antes de la promesa
   if (!numeroTarjeta || !fechaExpiracion || !codigoSeguridad || !nombreTitular || !paisEmision || !tipoTarjeta) {
     alert("Por favor, complete todos los campos.");
-    document.getElementById("confirmarCompra").disabled = false; // Rehabilitar el botón
-    compraEnProgreso = false; // Restablecer el estado de la compra
+    document.getElementById("confirmarCompra").disabled = false; 
+    compraEnProgreso = false; 
     return;
   }
 
@@ -694,16 +667,13 @@ document.getElementById("confirmarCompra").addEventListener("click", function (e
     return;
   }
 
-  // Calcular el total de la compra
-  const presupuestoMaximo = 500000; // Ejemplo de presupuesto máximo
+  const presupuestoMaximo = 500000;
   let totalPagar = 0;
   const totalProductos = productosCarrito.length;
 
   productosCarrito.forEach(producto => {
     totalPagar += producto.precio * producto.cantidad;
   });
-
-  // Validar que el número de productos y el total no superen los límites
   if (totalProductos > 20) {
     alert("Error: La cantidad de productos no puede superar los 20.");
     document.getElementById("confirmarCompra").disabled = false;
@@ -717,10 +687,8 @@ document.getElementById("confirmarCompra").addEventListener("click", function (e
     compraEnProgreso = false;
     return;
   }
-
-  // Simulamos el proceso de compra con una promesa
   new Promise((resolve, reject) => {
-    const tiempoEspera = Math.random() * (3000 - 2000) + 2000; // Tiempo aleatorio entre 2 y 3 segundos
+    const tiempoEspera = Math.random() * (3000 - 2000) + 2000;
 
     setTimeout(() => {
       resolve("Compra validada correctamente. ¡Gracias por su compra!");
@@ -730,16 +698,15 @@ document.getElementById("confirmarCompra").addEventListener("click", function (e
       alert(mensaje);
       alert("Pago realizado con éxito. Será redirigido para realizar otra compra.");
       setTimeout(() => {
-        window.location.href = "e-commerce.html"; // Redirigir al usuario después de 2 segundos
+        window.location.href = "e-commerce.html";
       }, 2000);
     })
     .catch((error) => {
-      alert(error); // Mostrar el error específico si ocurre
-      document.getElementById("confirmarCompra").disabled = false; // Habilitar el botón de nuevo
-      compraEnProgreso = false; // Restablecer el estado de la compra
+      alert(error); 
+      document.getElementById("confirmarCompra").disabled = false;
+      compraEnProgreso = false; 
     });
 });
-
 function mostrarProductos(listaProductos) {
   const cantidadPorCarga = 15;
   const totalProductos = listaProductos.length;
@@ -791,5 +758,20 @@ function mostrarProductos(listaProductos) {
   productosMostrados += cantidadPorCarga;
 }
 
-document.getElementById("filtrar").addEventListener("click", aplicarFiltros);
-document.getElementById("limpiarFiltros").addEventListener("click", limpiarFiltros);
+function actualizarResumenCompra() {
+  let productosCarrito = JSON.parse(localStorage.getItem("productosCarrito")) || [];
+  let totalProductos = 0;
+  let totalPrecio = 0;
+
+  productosCarrito.forEach(producto => {
+    totalProductos += producto.cantidad; 
+    totalPrecio += producto.precio * producto.cantidad; 
+  });
+  const costoEnvio = totalPrecio > 100000 ? 0 : 15000;
+  const totalPagar = totalPrecio + costoEnvio;
+  document.getElementById("totalProductos").textContent = totalProductos;
+  document.getElementById("costoEnvio").textContent = costoEnvio;
+  document.getElementById("totalPagar").textContent = totalPagar;
+}
+
+actualizarResumenCompra();

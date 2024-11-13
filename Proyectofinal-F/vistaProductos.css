@@ -1,204 +1,179 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: #f4f4f4;
-  }
-  
-  /* Estilo para el header */
-  header {
-    background-color: #2f4f4f;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  header h1 {
-    margin: 0;
-    font-size: 2rem;
-  }
-  
-  header img {
-    margin-left: 10px;
-  }
-  
-  /* Estilo para el footer */
-  footer {
-    background-color: #2f4f4f;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-    position: relative;
-    width: 100%;
-    bottom: 0;
-  }
-  
-  footer p {
-    margin: 5px;
-    font-size: 0.9rem;
-  }
-  
-  /* Estilo para el main */
-  main {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 20px;
-    flex-grow: 1;
-  }
-  
-  /* Estilo para la sección de filtros */
-  #filtros {
-    width: 100%;
-    max-width: 1000px;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  #filtros select,
-  #filtros input {
-    padding: 10px;
-    font-size: 1rem;
-    margin-right: 10px;
-  }
-  
-  #filtros button {
-    padding: 10px 20px;
-    background-color: #2f4f4f;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-  }
-  
-  #filtros button:hover {
-    background-color: #4f8a8b;
-  }
-  
-  /* Distribución de las secciones: productos a la izquierda y detalles a la derecha */
-  #vistaProductos {
-    width: 70%;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    flex-grow: 1;
-  }
-  
-  #detalleProducto {
-    width: 28%;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: none; /* Ocultarlo inicialmente */
-  }
-  
-  #productosList {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap; /* Asegura que las tarjetas se distribuyan en múltiples filas */
-    justify-content: space-between;
-    gap: 20px;
-  }
-  
-  #productosList li {
-    width: 30%; /* Tamaño de cada tarjeta (3 tarjetas por fila) */
-    background-color: #f8f8f8;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  #tarjeta-imagen img {
-    width: 100%; /* Asegura que las imágenes ocupen el mismo tamaño */
-    height: 200px; /* Altura fija para que todas las imágenes tengan el mismo tamaño */
-    object-fit: cover; /* Mantiene la proporción de la imagen, ajustándola dentro del contenedor */
-    margin-bottom: 15px;
-  }
-  
-  #productosList li h3 {
-    font-size: 1.2rem;
-    margin: 10px 0;
-  }
-  
-  #productosList li p {
-    font-size: 1rem;
-    margin-bottom: 10px;
-  }
-  
-  #productosList li button {
-    padding: 10px 20px;
-    background-color: #2f4f4f;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    margin-top: auto;
-  }
-  
-  #productosList li button:hover {
-    background-color: #4f8a8b;
-  }
-  
-  #mensajeFinal {
-    text-align: center;
-    margin-top: 20px;
-    color: #888;
-  }
-  
-  /* Botones de navegación */
-  nav {
-    width: 100%;
-    max-width: 1000px;
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  nav button {
-    padding: 10px 20px;
-    background-color: #2f4f4f;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-  }
-  
-  nav button:hover {
-    background-color: #4f8a8b;
-  }
-  
-  /* Alineación de las secciones: productos a la izquierda, detalles a la derecha */
-  #vistaProductos {
-    width: 70%;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    flex-grow: 1;
-  }
-  
-  #detalleProducto {
-    width: 28%;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: none; /* Ocultarlo inicialmente */
-  }
-  
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  background-color: white;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr; 
+  gap: 20px;
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #c1ead7;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px silver;
+  grid-template-rows: auto 1fr auto; /
+}
+
+header {
+  background-color: lightblue;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+header img {
+  margin-left: 10px;
+}
+
+#filtros {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 10px;
+  background-color: white;
+  border-radius: 5px;
+  margin-bottom: 20px; 
+  grid-column: 1 / -1; 
+}
+
+#filtros select,
+#filtros input,
+#filtros button {
+  padding: 10px;
+  margin: 0 5px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+#filtros input {
+  flex-grow: 1;
+  max-width: 300px;
+}
+
+#filtros select {
+  max-width: 200px;
+}
+
+#filtros button {
+  background-color: lightseagreen;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#vistaProductos {
+  display: flex;
+  flex-direction: column;
+  grid-column: 1 / 2;
+  padding-right: 10px;
+  overflow-y: auto;
+}
+
+#productosList {
+  list-style-type: none;
+  padding: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px black;
+  text-align: center;
+}
+
+#productosList h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+#productosList p {
+  margin: 5px 0;
+}
+
+#detalleProducto {
+  grid-column: 3 / 4;
+  background-color: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px black;
+  max-width: 300px;
+}
+
+#detalleProducto h2 {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+#detalleProducto img {
+  display: block;
+  margin: 0 auto 15px;
+}
+
+#detalleProducto p,
+#detalleProducto label {
+  margin: 8px 0;
+  font-size: 0.9em;
+}
+
+button {
+  background-color: lightseagreen;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+nav {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+nav button {
+  margin: 0 10px;
+}
+
+footer {
+  background-color: lightblue;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 0.9em;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  max-width: 150px;
+  max-height: 150px;
+}
+
+#tarjeta-imagen img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}

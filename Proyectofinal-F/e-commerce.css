@@ -1,4 +1,4 @@
-/* Estilo global */
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -10,9 +10,8 @@ body {
   min-height: 100vh;
 }
 
-/* El header se centra y tiene un fondo oscuro */
 header {
-  background-color: #2f4f4f;
+  background-color:lightblue;
   color: #fff;
   text-align: center;
   padding: 20px 0;
@@ -31,7 +30,7 @@ header img {
 }
 
 footer {
-  background-color: #2f4f4f;
+  background-color: lightblue;
   color: #fff;
   text-align: center;
   padding: 10px 0;
@@ -45,7 +44,7 @@ footer p {
   font-size: 0.9rem;
 }
 
-/* Centrar el contenido principal */
+
 main {
   display: flex;
   justify-content: center;
@@ -54,14 +53,13 @@ main {
   padding: 20px;
 }
 
-/* Centrar el formulario en el medio de la página */
 #vistaRequerimientos {
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 600px; /* Limita el ancho máximo del formulario */
+  max-width: 600px; 
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -69,7 +67,6 @@ main {
   margin: 0 auto;
 }
 
-/* Estilos del formulario */
 #formularioCompra {
   display: flex;
   flex-direction: column;
@@ -103,7 +100,7 @@ main {
 
 #formularioCompra button {
   padding: 10px 20px;
-  background-color: #2f4f4f;
+  background-color: lightseagreen;
   color: white;
   border: none;
   border-radius: 5px;
@@ -112,20 +109,13 @@ main {
   margin-top: 10px;
 }
 
-#formularioCompra button:hover {
-  background-color: #4f8a8b;
-}
-
 #formularioCompra button[type="reset"] {
   background-color: #ccc;
   margin-left: 10px;
 }
 
-#formularioCompra button[type="reset"]:hover {
-  background-color: #999;
-}
 
-/* Alineación del aside */
+
 aside {
   display: flex;
   justify-content: flex-start;
